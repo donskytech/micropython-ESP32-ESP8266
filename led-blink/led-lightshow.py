@@ -29,15 +29,16 @@ def turn_on_leds():
         pin.value(ON)
 
 def running_leds():
-    for pin in led_pins:
-        turn_off_leds()
-        pin.value(ON)
-        sleep_ms(SHORT_SLEEP_MS)
-    
-    for pin in reversed(led_pins):
-        turn_off_leds()
-        pin.value(ON)
-        sleep_ms(SHORT_SLEEP_MS)
+    for _ in range(2):
+        for pin in led_pins:
+            turn_off_leds()
+            pin.value(ON)
+            sleep_ms(SHORT_SLEEP_MS)
+        
+        for pin in reversed(led_pins):
+            turn_off_leds()
+            pin.value(ON)
+            sleep_ms(SHORT_SLEEP_MS)
         
 def mixer_leds():
     turn_off_leds()
@@ -78,12 +79,13 @@ def odd_even_leds():
         pin.value(ON)
         sleep_ms(MEDIUM_SLEEP_MS)
         
-def dual_blink_leds(): 
-    for index in [2,6,0,4]:
-        turn_off_leds()
-        for pin in led_pins[index:index+2:]:
-            pin.value(ON)
-        sleep_ms(MEDIUM_SLEEP_MS)
+def dual_blink_leds():
+    for _ in range(2):
+        for index in [2,6,0,4]:
+            turn_off_leds()
+            for pin in led_pins[index:index+2:]:
+                pin.value(ON)
+            sleep_ms(MEDIUM_SLEEP_MS)
             
 def led_light_show(t):
     led_effects = [blink_blink_leds, running_leds, dual_blink_leds, mixer_leds, odd_even_leds]
