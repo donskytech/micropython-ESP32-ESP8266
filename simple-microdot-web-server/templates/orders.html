@@ -1,0 +1,18 @@
+{% args name, orders %}
+<!doctype html>
+<html>
+  <head>
+    <title>Microdot + uTemplate example</title>
+  </head>
+  <body>
+    <h1>List of Orders:</h1>
+    {% if name %}
+    <p>Customer Name: <b>{{ name }}</b>!</p>
+    {% endif %}
+    <ul>
+    {% for order in orders %}
+        <li>{{ order }}</li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
