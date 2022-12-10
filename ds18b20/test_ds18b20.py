@@ -7,9 +7,6 @@ roms = ds_sensor.scan()
 
 if not roms:
     raise RuntimeError("Found no DS18b20")
-
-for rom in roms:
-    print(ds_sensor.read_temp(rom))
     
 while True:
   ds_sensor.convert_temp()
