@@ -1,4 +1,5 @@
 import time
+import ubinascii
 from umqtt.simple import MQTTClient
 
 # Default MQTT MQTT_BROKER to connect to
@@ -12,22 +13,23 @@ def sub_cb(topic, msg):
 
 
 def main():
-    c = MQTTClient(CLIENT_ID, MQTT_BROKER, keepalive=60)
-    c.set_callback(sub_cb)
-    c.connect()
-    c.subscribe(TOPIC)
+    mqttClient = MQTTClient(CLIENT_ID, MQTT_BROKER, keepalive=60)
+    mqttClient.set_callback(sub_cb)
+    mqttClient.connect()
+    mqttClient.subscribe(TOPIC)
+    print(f"Connected to MQTT  Broker :: {SERVER}, and waiting for callback function to be called!")
     while True:
         if True:
             # Blocking wait for message
-            c.wait_msg()
+            mqttClient.wait_msg()
         else:
             # Non-blocking wait for message
-            c.check_msg()
+            mqttClient.check_msg()
             # Then need to sleep to avoid 100% CPU usage (in a real
             # app other useful actions would be performed instead)
             time.sleep(1)
 
-    c.disconnect()
+    mqttClient.disconnect()
 
 
 if __name__ == "__main__":
