@@ -17,7 +17,7 @@ def main():
     mqttClient.set_callback(sub_cb)
     mqttClient.connect()
     mqttClient.subscribe(TOPIC)
-    print(f"Connected to MQTT  Broker :: {SERVER}, and waiting for callback function to be called!")
+    print(f"Connected to MQTT  Broker :: {MQTT_BROKER}, and waiting for callback function to be called!")
     while True:
         if True:
             # Blocking wait for message

@@ -1,23 +1,36 @@
 import time
 import ubinascii
-import machine
 from umqtt.simple import MQTTClient
-from machine import Pin
 
-# Default MQTT server to connect to
-SERVER = "192.168.100.22"
+# Default MQTT MQTT_BROKER to connect to
+MQTT_BROKER = "192.168.100.22"
 CLIENT_ID = ubinascii.hexlify(machine.unique_id())
 TOPIC = b"temperature"
 
+# Received messages from subscriptions will be delivered to this callback
+def sub_cb(topic, msg):
+    print((topic, msg))
+
 
 def main():
-    mqttClient = MQTTClient(CLIENT_ID, SERVER, keepalive=60)
+    mqttClient = MQTTClient(CLIENT_ID, MQTT_BROKER, keepalive=60)
+    mqttClient.set_callback(sub_cb)
     mqttClient.connect()
-    print(f"Connected to MQTT  Broker :: {SERVER}")
+    mqttClient.subscribe(TOPIC)
+    print(f"Connected to MQTT  Broker :: {MQTT_BROKER}, and waiting for callback function to be called!")
+    while True:
+        if True:
+            # Blocking wait for message
+            mqttClient.wait_msg()
+        else:
+            # Non-blocking wait for message
+            mqttClient.check_msg()
+            # Then need to sleep to avoid 100% CPU usage (in a real
+            # app other useful actions would be performed instead)
+            time.sleep(1)
 
-    mqttClient.publish(TOPIC, b"49")
     mqttClient.disconnect()
-    
+
+
 if __name__ == "__main__":
     main()
-
