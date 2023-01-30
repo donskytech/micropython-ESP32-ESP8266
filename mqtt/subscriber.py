@@ -38,7 +38,6 @@ def main():
             # Then need to sleep to avoid 100% CPU usage (in a real
             # app other useful actions would be performed instead)
             global last_ping
-#             current_time = time.time()
             if (time.time() - last_ping) >= ping_interval:
                 mqttClient.ping()
                 last_ping = time.time()
