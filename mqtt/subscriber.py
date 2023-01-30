@@ -1,6 +1,7 @@
 import time
 import ubinascii
 from umqtt.simple import MQTTClient
+import machine
 
 # Default MQTT MQTT_BROKER to connect to
 MQTT_BROKER = "192.168.100.22"
