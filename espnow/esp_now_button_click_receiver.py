@@ -23,5 +23,5 @@ while True:
             print("Turning off LED")
             led_pin.off()
         else:
-            print("Unknown message!")
+            print(f"Unknown message! {msg}")
             

@@ -50,11 +50,3 @@ while True:
         # Update the last button state
         last_button_state = current_button_state
         
-
-# # Main loop
-# while True:
-#     wait_pin_change(button)
-#     if not button.value():
-#         message = "Hello from ESP32 A"
-#         esp.send(peer, message)
-#         print("Sent data:", message)
