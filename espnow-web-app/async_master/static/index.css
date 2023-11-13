@@ -1,0 +1,30 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
+}
+
+header, main, footer {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+header {
+    background-color: #900C3F;
+    color: #fff;
+}
+
+main {
+    flex: 1; /* Grow and take available space */
+}
+
+footer {
+    background-color: #900C3F;
+    color: #fff;
+}
