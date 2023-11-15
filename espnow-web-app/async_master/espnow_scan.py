@@ -1,7 +1,8 @@
 import sys
 import time
 import network
-import espnow
+# import espnow
+import aioespnow
 
 MAX_CHANNEL = 14  # Maximum wifi channel to scan (2.4MHz band)
 NUM_PINGS = 10  # The default number of pings to send on each channel
@@ -66,7 +67,8 @@ def scan(peer, num_pings=NUM_PINGS, verbose=False):
     """
     if not sta.active() and not ap.active():
         sta.active(True)  # One of the WLAN interfaces must be active
-    enow = espnow.ESPNow()
+#     enow = espnow.ESPNow()
+    enow = aioespnow.AIOESPNow()
     enow.active(True)
     try:
         enow.add_peer(peer)  # If user has not already registered peer

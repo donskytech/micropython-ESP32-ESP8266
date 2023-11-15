@@ -18,6 +18,7 @@ def do_connect_sta():
     
     
 def do_connect_ap():
+    print("Starting Access Point...")
     # Replace the following with your WIFI Credentials
     ssid = 'smart_farming_tupt'
     password = 'team-tupt'
@@ -29,6 +30,6 @@ def do_connect_ap():
     print('Connection successful')
     print(ap.ifconfig())
     
-print("Connecting to your wifi...")
+
 # do_connect()
 do_connect_ap()

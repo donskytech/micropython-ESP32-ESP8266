@@ -22,13 +22,21 @@ function onClose(event) {
   setTimeout(initializeSocket, 2000);
 }
 function onMessage(message) {
-  //const parsedMessage = JSON.parse(message);
-  console.log("WebSocket message received:", message);
-  const textarea = document.getElementById('message');
-  
-  
-  textarea.value += message.data + '\r\n';
+  const parsedMessage = JSON.parse(message.data);
+  console.log("WebSocket message received:", parsedMessage);
 
+  if (parsedMessage) {
+    switch (parsedMessage.event_type) {
+      case "updateSensorReadings":
+        updateSensorReadings(parsedMessage);
+        break;
+      case "updateWaterCycle":
+        updateWaterCycle(parsedMessage);
+        break;
+      default:
+        console.log("Unknown event type received");
+    }
+  }
 }
 
 function sendMessage(message) {
@@ -36,7 +44,28 @@ function sendMessage(message) {
 }
 
 function updateValues(data) {
-//   sensorData.unshift(data);
-//   if (sensorData.length > 20) sensorData.pop();
-//   sensorValues.value = sensorData.join("\r\n");
+  //   sensorData.unshift(data);
+  //   if (sensorData.length > 20) sensorData.pop();
+  //   sensorValues.value = sensorData.join("\r\n");
+}
+
+function updateSensorReadings(message) {
+  console.log(`updateSensorReadings :: ${message}`);
+  let item = document.getElementById(message.soil_monitor_id);
+  item.textContent = `${message.soil_monitor} : ${message.sensor_reading}`;
+}
+
+function updateWaterCycle(message) {
+  console.log(`updateWaterCycle :: ${message}`);
+  let cycleList = document.getElementById("cycle-list");
+  let noCycleItem = document.getElementById("no-cycle-list");
+  if (noCycleItem) {
+    cycleList.removeChild(noCycleItem);
+  }
+
+  var newItem = document.createElement("li");
+  newItem.textContent = `${message.soil_module} - ${message.date_time}`;
+  cycleList.appendChild(newItem);
+  cycleList.insertBefore(newItem, cycleList.firstChild)
+  // item.textContent = `${message.soil_monitor} : ${message.sensor_reading}`;
 }

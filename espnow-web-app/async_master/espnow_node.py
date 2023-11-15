@@ -9,6 +9,7 @@ class EspNowNode:
 
         for peer_mac in self.peers_mac:
             try:
+                print(f"Adding peer's MAC address : {self.peers_mac}")
                 self.node.add_peer(peer_mac)      # Must add_peer() before send()
             except OSError:
                 print("Peer already exists")

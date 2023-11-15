@@ -1,30 +1,51 @@
+{% args cycle_list %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/index.css">
-    <title>TUP-T Soil Monitoring System</title>
-</head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <h1>TUP-T Soil Monitoring System</h1>
-        </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/index.css" />
+    <title>TUP-T Wireless Auto Watering Farming System</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item">
+        <div>
+          <h1>Soil Moisture Sensor Monitor</h1>
+        </div>
+        <div>
+          <ul class="styled-list">
+            <li id="sm_1">Soil Moisture 1: NO-DATA</li>
+            <li id="sm_2">Soil Moisture 2: NO-DATA</li>
+            <li id="sm_3">Soil Moisture 3: NO-DATA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div>
+          <h1>Latest Watering Cycle</h1>
+        </div>
 
-        <!-- Content -->
-        <main>
-            <p>This is the main content of the page.</p>
-            <textarea id="message" name="message" rows="10" cols="20">
-            </textarea>
-        </main>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2023 Your Website. All rights reserved.</p>
-        </footer>
+        <div class="scroll-container">
+          <ul id="cycle-list" class="item-list">
+            {% if not cycle_list %}
+            <li id="no-cycle-list">No recorded watering cycle yet</li>
+            {% endif %} {% for cycle in cycle_list %} {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="grid-item">
+        <h1>Alarm Settings</h1>
+        <div class="currentAlarmTime"><h2>08:00 (24 Hour Format)</h2></div>
+        <button class="big-button">Set Time</button>
+      </div>
+      <div class="grid-item">
+        <div>
+          <h1>System Time</h1>
+          <h2 class="system-time">2:10 PM</h2>
+        </div>
+      </div>
     </div>
-    <script src="static/index.js"></script>
-</body>
+    <script type="text/javascript" src="static/index.js"></script>
+  </body>
 </html>

@@ -1,30 +1,90 @@
-body, html {
-    height: 100%;
-    margin: 0;
+body,
+html {
+  height: 100%;
+  margin: 0;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100vh;
 }
 
-header, main, footer {
-    padding: 20px;
-    text-align: center;
-    border: 1px solid #ddd;
+.grid-item {
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
 }
 
-header {
-    background-color: #900C3F;
-    color: #fff;
+.big-button {
+  font-size: 20px; /* Set the font size to make the button big */
+  padding: 15px 20px; /* Add padding to increase the size of the clickable area */
+  background-color: rgb(146, 39, 39); /* Set a background color */
+  color: #fff; /* Set text color to white */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Add rounded corners for a modern look */
+  cursor: pointer; /* Change the cursor to a pointer on hover */
 }
 
-main {
-    flex: 1; /* Grow and take available space */
+/* Add hover effect */
+.big-button:hover {
+  background-color: #2980b9; /* Darken the background color on hover */
 }
 
-footer {
-    background-color: #900C3F;
-    color: #fff;
+.system-time {
+  font-size: 5rem;
+}
+
+.styled-list {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.styled-list li {
+  font-size: 2.5rem;
+  background-color: rgb(146, 39, 39); /* Set background color for list items */
+  color: #fff; /* Set text color to white */
+  margin-bottom: 5px; /* Add space between list items */
+  padding: 10px; /* Add padding to each list item */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+.styled-list li:hover {
+  background-color: #2980b9; /* Darken the background color on hover */
+}
+
+.scroll-container {
+  max-height: 300px; /* Set the maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrollbar when content exceeds container height */
+  border: 1px solid #ddd; /* Add a border for visual separation */
+  border-radius: 5px; /* Add rounded corners */
+  padding: 10px; /* Add padding for better aesthetics */
+}
+
+.item-list {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.item-list li {
+  font-size: 1.5rem;
+  background-color: rgb(146, 39, 39); /* Set background color for list items */
+  color: #fff; /* Set text color to white */
+  margin-bottom: 5px; /* Add space between list items */
+  padding: 10px; /* Add padding to each list item */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+.item-list li:hover {
+  background-color: #2980b9; /* Darken the background color on hover */
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }

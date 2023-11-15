@@ -55,7 +55,7 @@ _sta, _ap = wlans
 timeout = 20  # (seconds) timeout on connect()
 default_channel = 1
 try:
-    default_pm_mode = sta.PM_PERFORMANCE
+    default_pm_mode = sta.PM_NONE
 except AttributeError:
     default_pm_mode = None
 try:
@@ -108,7 +108,7 @@ def connect(*args, **kwargs):
 def reset(
     sta=True,
     ap=False,
-    channel=default_channel,
+    channel=0,
     pm=default_pm_mode,
     protocol=default_protocol,
 ):
