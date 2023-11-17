@@ -33,6 +33,9 @@ function onMessage(message) {
       case "updateWaterCycle":
         updateWaterCycle(parsedMessage);
         break;
+      case "updateSystemTime":
+        updateSystemTime(parsedMessage);
+        break;
       default:
         console.log("Unknown event type received");
     }
@@ -65,7 +68,12 @@ function updateWaterCycle(message) {
 
   var newItem = document.createElement("li");
   newItem.textContent = `${message.soil_module} - ${message.date_time}`;
-  cycleList.appendChild(newItem);
-  cycleList.insertBefore(newItem, cycleList.firstChild)
+  cycleList.insertBefore(newItem, cycleList.firstChild);
   // item.textContent = `${message.soil_monitor} : ${message.sensor_reading}`;
+}
+
+function updateSystemTime(message) {
+  console.log(`updateSystemTime :: ${message}`);
+  let systemTime = document.getElementById("system-time");
+  systemTime.textContent = `${message.date_time}`;
 }

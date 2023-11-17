@@ -10,7 +10,8 @@ from soil_moisture_sensor_module import SoilMonitor
 import config
 import urandom
 
-MAC = '24:DC:C3:AF:C1:F9'
+# MAC = 'b0:a7:32:29:b3:c1'
+MAC = '24:dc:c3:af:c1:f9' # TFT
 b_MAC = bytes([int(i, 16) for i in MAC.split(':')])
 
 wifi = WiFiNode()
@@ -30,7 +31,7 @@ async def send_soil_moisture_readings():
         print(f'Sending Soil Moisture sensor: {message}')
         await espnow.node.asend(ujson.dumps(message))
         
-        await asyncio.sleep_ms(2000)
+        await asyncio.sleep_ms(5000)
 
 async def main():
     await asyncio.gather(send_soil_moisture_readings())

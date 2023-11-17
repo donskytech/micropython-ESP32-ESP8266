@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/alarm.css" />
+    <title>TUP-T Wireless Auto Watering Farming System - Set Alarm</title>
+  </head>
+  <body>
+    <div class="alarm-container">
+      <form class="alarm-form" method="post" action="/alarm">
+        <h2>Set Alarm</h2>
+        <label for="alarmtime">Alarm Time (24 Hour Format):</label>
+        <input
+          type="text"
+          id="alarmtime"
+          name="alarmtime"
+          placeholder="08:00"
+        />
+
+        <label for="duration">Duration (in minutes):</label>
+        <input type="duration" id="duration" name="duration" placeholder="5" />
+
+        <button type="submit">Set</button>
+        <button type="button" id="backButton">Back</button>
+      </form>
+    </div>
+    <script type="text/javascript" src="static/alarm.js"></script>
+  </body>
+</html>

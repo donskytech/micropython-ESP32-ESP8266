@@ -7,12 +7,12 @@ class NotEnoughDataError(Exception):
     pass
 
 class SoilMonitor:
-    def __init__(self, sensor_id, name):
+    def __init__(self, sensor_id, name, relay_pin):
         self.queue = deque()
         self.id = sensor_id
         self.name = name
         self.valve_status = False
-        self.relay_pin = Pin(23, Pin.OUT)
+        self.relay_pin = Pin(relay_pin, Pin.OUT)
         self.close_valve()
         
     def get_id(self):

@@ -17,6 +17,13 @@ html {
   text-align: center;
 }
 
+/* Media query for tablets (768px) and smaller */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Change to a single column layout for smaller screens */
+  }
+}
+
 .big-button {
   font-size: 20px; /* Set the font size to make the button big */
   padding: 15px 20px; /* Add padding to increase the size of the clickable area */
@@ -82,9 +89,18 @@ html {
   background-color: #2980b9; /* Darken the background color on hover */
 }
 
-@media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgb(146, 39, 39);
+  color: #fff;
+  border: 1px solid #2980b9;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+  background-color: #2980b9;
 }
