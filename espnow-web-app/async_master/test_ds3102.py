@@ -12,7 +12,7 @@ import ds1302
 
 class RTCClock:
     def __init__(self):
-        self.rtc = ds1302.DS1302(Pin(5),Pin(18),Pin(19))
+        self.rtc = ds1302.DS1302(Pin(25),Pin(26),Pin(27))
         
     def get_current_date_time(self):
         return self.rtc.date_time()

@@ -27,7 +27,7 @@ def generate_random_number(start, end):
 async def send_soil_moisture_readings():
     while True:
 #         message = {"soil_monitor": config.SOIL_MONITOR_MODULE_1, "sensor_reading": soil_monitor_module.read_soil_moisture()}
-        message = {"soil_monitor_id": config.SOIL_MONITOR_ID, "soil_monitor": config.SOIL_MONITOR_MODULE_1, "sensor_reading": generate_random_number(5000, 65000)} 
+        message = {"soil_monitor_id": config.SOIL_MONITOR_ID, "soil_monitor": config.SOIL_MONITOR_NAME, "sensor_reading": generate_random_number(5000, 65000)} 
         print(f'Sending Soil Moisture sensor: {message}')
         await espnow.node.asend(ujson.dumps(message))
         
